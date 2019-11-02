@@ -4,7 +4,7 @@ CREATE TABLE `users` (
 	`email` varchar(255) NOT NULL UNIQUE,
 	`password` varchar(255) NOT NULL,
 	`phone` varchar(10) NOT NULL UNIQUE,
-	`dob` DATE(10) NOT NULL,
+	`dob` DATE NOT NULL,
 	`prime` BINARY(1) NOT NULL,
 	PRIMARY KEY (`id`)
 );
@@ -60,7 +60,7 @@ CREATE TABLE `amenities` (
 
 CREATE TABLE `bookings` (
 	`user_id` INT NOT NULL,
-	`hotel_id` INT NOT NULL AUTO_INCREMENT,
+	`hotel_id` INT NOT NULL,
 	`room_id` INT NOT NULL,
 	`checkin` DATE NOT NULL,
 	`checkout` DATE NOT NULL,
