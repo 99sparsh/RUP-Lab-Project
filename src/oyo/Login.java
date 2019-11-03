@@ -99,11 +99,11 @@ public class Login extends javax.swing.JFrame {
         try{
             stmt=conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            while(rs.next()){
-                 email = rs.getString("email");
-                 password = rs.getString("password");
-                 access = rs.getInt("access");
-            }
+            rs.next();
+            email = rs.getString("email");
+            password = rs.getString("password");
+            access = rs.getInt("access");
+            
         }catch(Exception e){
             e.printStackTrace();
         }
