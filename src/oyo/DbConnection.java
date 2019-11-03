@@ -21,7 +21,7 @@ public class DbConnection {
         String db="",user="",pass="";
         try{
             FileInputStream fis=new FileInputStream("/home/sparsh/Documents/RUP Lab OYO/oyo/src/oyo/dbsettings.properties"); 
-            Properties p=new Properties (); 
+            Properties p=new Properties(); 
             p.load(fis); 
             db=(String)p.getProperty("db");
             user=(String)p.getProperty("user");
