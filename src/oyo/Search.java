@@ -287,7 +287,7 @@ public class Search extends javax.swing.JFrame {
         String type = jComboBox1.getSelectedItem().toString();
         Connection conn = DbConnection.getConnection();
         Statement stmt = null;
-        String query="select * from hotels natural join amenities where city='"+city+"'";
+        String query="select * from hotels,amenities,pricing,reviews where hotels.id=amenities.hotel_id and hotels.id=pricing.hotel_id and hotels.id=reviews.hotel_id and hotels.city='"+city+"'";
         if(jCheckBox1.isSelected())
             query+=" and pool=1";
         if(jCheckBox2.isSelected())
@@ -319,8 +319,9 @@ public class Search extends javax.swing.JFrame {
             roomid=2;
         else
             roomid=3;
-        query+=" and room_id="+roomid;
-        String[] columnNames = {"Hotel ID", "Room ID", "Name", "Address", "Pincode"};
+        query+=" and amenities.room_id="+roomid+" order by reviews.rating desc,pricing.price asc";
+        System.out.println(query);
+        String[] columnNames = {"Hotel ID", "Room ID", "Name", "Address", "Pincode","Price"};
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
         try{
             stmt = conn.createStatement();
@@ -331,7 +332,8 @@ public class Search extends javax.swing.JFrame {
                 String name = rs.getString("name");
                 String address = rs.getString("address");
                 int pin = rs.getInt("pincode");
-                String[] data = {String.valueOf(hid),String.valueOf(rid),name,address,String.valueOf(pin)} ;
+                int price=rs.getInt("price");
+                String[] data = {String.valueOf(hid),String.valueOf(rid),name,address,String.valueOf(pin),String.valueOf(price)} ;
                 tableModel.addRow(data);
             }
             jTable1.setModel(tableModel);
