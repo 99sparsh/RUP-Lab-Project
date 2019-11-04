@@ -167,7 +167,7 @@ public class AddReview extends javax.swing.JFrame {
             String query2="insert into reviews values("+id+","+jTextField3.getText()+",'"+jTextArea1.getText()+"',"+jTextField1.getText()+")";
             stmt=conn.createStatement();
             stmt.executeUpdate(query2);
-            JOptionPane.showMessageDialog(this,"Review submitetd");
+            JOptionPane.showMessageDialog(this,"Review submitted");
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -174,7 +174,6 @@ public class Register extends javax.swing.JFrame {
         String password = jPasswordField1.getText();
         //String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
         String query="insert into users(name,email,password,phone,dob,prime) values('"+name+"','"+email+"','"+password+"','"+phone+"','"+date+"',"+"0)";
-        System.out.println(query);
         Statement stmt=null;
         try{
            stmt=conn.createStatement();
