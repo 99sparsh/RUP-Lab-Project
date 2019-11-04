@@ -17,6 +17,10 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     public static String email,password;
+<<<<<<< HEAD
+=======
+    public static int user_id;
+>>>>>>> 7ecd532a2d2dc755dc94b4c45b1aaf4cb072b10e
     public Login() {
         initComponents();
     }
@@ -106,8 +110,13 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Connection conn = DbConnection.getConnection();
         Statement stmt=null;
+<<<<<<< HEAD
         String query="select email,password,access from users where email='"+jTextField1.getText()+"'";
          email="";password=""; int access=0;
+=======
+        String query="select id,email,password,access from users where email='"+jTextField1.getText()+"'";
+        email="";password=""; int access=0;
+>>>>>>> 7ecd532a2d2dc755dc94b4c45b1aaf4cb072b10e
         try{
             stmt=conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -115,6 +124,7 @@ public class Login extends javax.swing.JFrame {
             email = rs.getString("email");
             password = rs.getString("password");
             access = rs.getInt("access");
+            user_id=rs.getInt("id");
             
         }catch(Exception e){
             e.printStackTrace();
