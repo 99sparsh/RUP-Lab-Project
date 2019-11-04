@@ -20,70 +20,8 @@ public class Booking_logs extends javax.swing.JFrame {
     /**
      * Creates new form Booking_logs
      */
-    Object [][] a=new Object[10][4];
-    Object [][] b=new Object[10][4];
-    Object [][] c=new Object[10][4];
-    String d[]={"Hotel name","Checkin","Checkout","Bill Amount"};
     public Booking_logs() {
-    Connection conn;
-    conn=DbConnection.getConnection();
-        int id=1;//assume 
-        String query="select * from bookings where user_id="+id;
-        Statement st=null,st2=null;
-
-        try{
-            st=conn.createStatement();
-            st2=conn.createStatement();
-            ResultSet rs=st.executeQuery(query);
-            ResultSet rs2;
-            int i1=0,i2=0,i3=0;
-            while(rs.next())
-            {
-                int x=rs.getInt("hotel_id");
-                String y=rs.getString("checkin");  
-                String z=rs.getString("checkout");  
-                Date dt=new Date();
-                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
-                String currentTime = sdf.format(dt);
-                String query2="select name from bookings, hotels where bookings.hotel_id=hotels.id and hotels.id="+x;
-                rs2=st2.executeQuery(query2);
-                String w="";
-                while(rs2.next()){
-                w=rs2.getString("name");
-                }
-                int v=rs.getInt("bill_amount");
-                if(currentTime.compareTo(y)<0)
-                {
-                a[i1][0]=w;    
-                a[i1][1]=y;
-                a[i1][2]=z;
-                a[i1][3]=v;
-                i1++;
-                }
-                else if(currentTime.compareTo(z)>0)
-                {
-                b[i2][0]=w;    
-                b[i2][1]=y;
-                b[i2][2]=z;
-                b[i2][3]=v;
-                i2++; 
-                }
-                else
-                {
-                c[i3][0]=w;    
-                c[i3][1]=y;
-                c[i3][2]=z;
-                c[i3][3]=v;
-                i3++; 
-                
-                }
-
-            }
-        }
-        catch(Exception E)
-        {
-            System.out.println(E);
-        }
+    
     initComponents();
 
     }
@@ -206,24 +144,29 @@ public class Booking_logs extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
         new Upcoming_Booking().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-new Past_Booking().setVisible(true);        // TODO add your handling code here:
+this.setVisible(false);
+        new Past_Booking().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-new Ongoing_Booking().setVisible(true);        // TODO add your handling code here:
+this.setVisible(false);
+        new Ongoing_Booking().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
         new Customer().setVisible(true); 
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-new Login().setVisible(true);         // TODO add your handling code here:
+this.setVisible(false);
+        new Login().setVisible(true);         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
