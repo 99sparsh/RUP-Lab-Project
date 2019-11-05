@@ -7,6 +7,7 @@ package oyo;
 
 import java.sql.Connection;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 //import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -178,7 +179,7 @@ public class Register extends javax.swing.JFrame {
         try{
            stmt=conn.createStatement();
            stmt.executeUpdate(query);
-            System.out.println("Registered");
+           JOptionPane.showMessageDialog(this,"Registered");
         }catch(Exception e){
             e.printStackTrace();
         }

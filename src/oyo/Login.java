@@ -139,7 +139,7 @@ public class Login extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Connection conn = DbConnection.getConnection();
         Statement stmt=null;
-        String query="select email,password from hotel_admin where email='"+jTextField1.getText()+"'";
+        String query="select id,email,password from hotel_admin where email='"+jTextField1.getText()+"'";
          email="";password="";
         try{
             stmt=conn.createStatement();
@@ -147,7 +147,7 @@ public class Login extends javax.swing.JFrame {
             rs.next();
             email = rs.getString("email");
             password = rs.getString("password");
-            
+            user_id=rs.getInt("id");
             
         }catch(Exception e){
             e.printStackTrace();
