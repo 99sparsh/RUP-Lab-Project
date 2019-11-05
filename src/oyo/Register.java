@@ -179,7 +179,9 @@ public class Register extends javax.swing.JFrame {
         try{
            stmt=conn.createStatement();
            stmt.executeUpdate(query);
+           new SMS().sendSMS(phone);
            JOptionPane.showMessageDialog(this,"Registered");
+           
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -13,6 +13,7 @@ import java.util.Properties;
 public class DbConnection {
     
     static Connection con=null;
+    public static String sid,token;
     
     public static Connection getConnection()
     {
@@ -26,6 +27,8 @@ public class DbConnection {
             db=(String)p.getProperty("db");
             user=(String)p.getProperty("user");
             pass=(String)p.getProperty("password");
+            sid=(String)p.getProperty("sid");
+            token=(String)p.getProperty("token");
         }catch(Exception e){
             e.printStackTrace();
         }
