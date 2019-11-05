@@ -121,7 +121,7 @@ public class Login extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-        if(email.equals(jTextField1.getText())&&password.equals(jPasswordField1.getText())){
+        if(email.equals(jTextField1.getText())&&BCrypt.checkpw(jPasswordField1.getText(),password)){
             if(access==0)
                 new Customer().setVisible(true);
             else if(access==1)

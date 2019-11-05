@@ -173,7 +173,7 @@ public class Register extends javax.swing.JFrame {
         String phone = jTextField3.getText();
         String date = jTextField4.getText();
         String password = jPasswordField1.getText();
-        //String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+        password = BCrypt.hashpw(password,BCrypt.gensalt(12));
         String query="insert into users(name,email,password,phone,dob,prime) values('"+name+"','"+email+"','"+password+"','"+phone+"','"+date+"',"+"0)";
         Statement stmt=null;
         try{
