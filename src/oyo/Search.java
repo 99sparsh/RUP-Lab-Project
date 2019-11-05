@@ -298,7 +298,10 @@ public class Search extends javax.swing.JFrame {
         String type = jComboBox1.getSelectedItem().toString();
         Connection conn = DbConnection.getConnection();
         Statement stmt = null;
-        String query="select * from hotels,amenities,pricing,reviews where hotels.id=amenities.hotel_id and hotels.id=pricing.hotel_id and hotels.id=reviews.hotel_id and hotels.city='"+city+"'";
+       String query="select * from (select * from amenities natural join pricing) as a,hotels where hotels.id=a.hotel_id and city='"+jTextField1.getText()+"'";
+
+        /*String query="select distinct hotels.id,amenities.room_id,hotels.address,hotels.name,pricing.price,hotels.pincode "
+                + "from hotels,amenities,pricing where hotels.id=amenities.hotel_id and hotels.id=pricing.hotel_id and hotels.city='"+city+".getTe'";*/
         if(jCheckBox1.isSelected())
             query+=" and pool=1";
         if(jCheckBox2.isSelected())
@@ -330,7 +333,7 @@ public class Search extends javax.swing.JFrame {
             roomid=2;
         else
             roomid=3;
-        query+=" and amenities.room_id="+roomid+" order by reviews.rating desc,pricing.price asc";
+        query+=" and room_id="+roomid+" order by price asc";
         System.out.println(query);
         String[] columnNames = {"Hotel ID", "Room ID", "Name", "Address", "Pincode","Price"};
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);

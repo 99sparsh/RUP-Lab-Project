@@ -185,7 +185,7 @@ public class Booking extends javax.swing.JFrame {
             }
                             System.out.println(start);
                                             System.out.println(end);
-            String query="select quantity from room_availibility where hotel_id="+hotel_id+" and date_d='"+start+"' and room_id="+room_id;
+            String query="select quantity from room_availability where hotel_id="+hotel_id+" and date_d='"+start+"' and room_id="+room_id;
             try{
             st=conn.createStatement();
             rs=st.executeQuery(query);

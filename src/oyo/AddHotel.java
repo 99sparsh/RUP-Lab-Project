@@ -252,6 +252,7 @@ public class AddHotel extends javax.swing.JFrame {
             String admin = jTextField5.getText();
             String email = jTextField11.getText();
             String pass = jPasswordField1.getText();
+            
             String query1="insert into hotel_admin values("+adminid+",'"+admin+"','"+email+"','"+pass+"')";
             String query2="insert into hotels(name,address,city,pincode,admin_id) values('"+name+"','"+address+"','"+city+"',"+pin+","+adminid+")";
         try{

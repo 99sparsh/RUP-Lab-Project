@@ -239,7 +239,7 @@ new Booking().setVisible(true);// TODO add your handling code here:
                 p=Integer.parseInt(y);
                 jLabel7.setText(y);
             } 
-            query="select prime from user where id="+Login.user_id;
+            query="select prime from users where id="+Login.user_id;
             //query="select prime from users where id=1";
             st=conn.createStatement();
             rs=st.executeQuery(query);
@@ -285,14 +285,14 @@ new Booking().setVisible(true);// TODO add your handling code here:
             {
                 break;
             }
-            query="select quantity from room_availibility where hotel_id="+hotel_id+" and date_d='"+start+"' and room_id="+room_id;
+            query="select quantity from room_availability where hotel_id="+hotel_id+" and date_d='"+start+"' and room_id="+room_id;
             rs=st.executeQuery(query);
             int quantity=0;
             while(rs.next())
             {
             quantity=rs.getInt("quantity");
             }
-            query="update room_availibility set quantity="+(quantity-1)+" where hotel_id="+hotel_id+" and date_d='"+start+"' and room_id="+room_id;
+            query="update room_availability set quantity="+(quantity-1)+" where hotel_id="+hotel_id+" and date_d='"+start+"' and room_id="+room_id;
             System.out.println(query);
             
             
